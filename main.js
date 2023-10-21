@@ -3,9 +3,10 @@ const apiKey = "9ab38fc6ee3445fe8ab120343230310";
 const form = document.querySelector("#form");
 const input = document.querySelector("#inputCity");
 const weather = document.querySelector(".weather");
+const weatherInfo = document.querySelector(".weather-info");
 
 async function getWeather(city) {
-  const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=de`;
+  const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=en`;
   const response = await fetch(query);
   const data = await response.json();
   console.log(data);
@@ -19,8 +20,12 @@ async function getWeather(city) {
       temp: data.current.temp_c,
       condition: data.current.condition.text,
       icon: data.current.condition.icon,
+      feelslike: data.current.feelslike_c,
+      wind: data.current.wind_kph,
+      humidity: data.current.humidity,
     };
     showCard(weatherData);
+    showCardInfo(weatherData);
   }
 }
 
@@ -31,8 +36,8 @@ function showErrorMessage(message) {
 
 function showCard(weatherData) {
   const card = `
-  <div class="weather-wrapper">
-  <div class="temp">${weatherData.temp}<sup>c</sup></div>
+  <div class="weather-data-wrapper">
+  <div class="temp">${weatherData.temp}<sup>°</sup></div>
   <img class="weather-icon" src="${weatherData.icon}"></img>
   </div>
   <div class="cityName">${weatherData.name}</div>
@@ -40,7 +45,33 @@ function showCard(weatherData) {
   weather.insertAdjacentHTML("beforeend", card);
 }
 
+function showCardInfo(weatherData) {
+  const infoCard = `
+    <div class="weather-info-wrapper">
+    <div class="weather-info__left">
+      <div class="weather-info__left__city">${weatherData.name}</div>
+      <div class="weather-info__left__status">${weatherData.condition}</div>
+      <div class="weather-info__left__wrapper">
+        <img class="weather-info__left__wrapper__icon" src="${weatherData.icon}"></img>
+        <div class="weather-info__left__wrapper__temp">${weatherData.temp}<sup>°</sup></div>
+      </div>
+    </div>
+    <div class="weather-info__right">
+      <div class="feels-like"><span>Feels like</span>  ${weatherData.feelslike}<sup>°</sup></div>
+      <div class="humidity"><span>Humidity</span>  ${weatherData.humidity}%</div>
+      <div class="wind"><span>Wind</span>  ${weatherData.wind}km/h</div>
+    </div>
+  </div>
+  `;
+  weatherInfo.insertAdjacentHTML("afterbegin", infoCard);
+}
+
 getWeather("Flensburg");
+
+weather.addEventListener("click", function () {
+  console.log("MOIN");
+  weatherInfo.classList.toggle("hidden");
+});
 
 /* Pomodoro */
 const alarmSound = document.getElementById("alarm");
