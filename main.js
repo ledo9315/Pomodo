@@ -141,7 +141,6 @@ const sessionTime = {
   minutes: pomodoroSessionTime,
   seconds: seconds,
 };
-updateTimerDisplay(pomodoroSessionTime);
 
 if (localStorage.getItem("pomodoroSessionTime")) {
   pomodoroSessionTime = Number(localStorage.getItem("pomodoroSessionTime"));
@@ -149,9 +148,18 @@ if (localStorage.getItem("pomodoroSessionTime")) {
   longBreakSessionTime = Number(localStorage.getItem("longBreakSessionTime"));
 
   document.querySelector("#pomodoro-duration").value = pomodoroSessionTime;
-  document.querySelector("#short-break-duration").value = shortBreakSessionTime;
-  document.querySelector("#long-break-duration").value = longBreakSessionTime;
+  document.querySelector(
+    "#short-break-duration",
+  ).value = shortBreakSessionTime;
+  document.querySelector(
+    "#long-break-duration",
+  ).value = longBreakSessionTime;
+
+  minutes = pomodoroSessionTime;
+  sessionTime.minutes = pomodoroSessionTime;
   updateTimerDisplay(pomodoroSessionTime);
+} else {
+  updateTimerDisplay(minutes);
 }
 
 startButton.addEventListener("click", toggleTimer);
