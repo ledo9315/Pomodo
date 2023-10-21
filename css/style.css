@@ -8,7 +8,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* Links */
@@ -80,7 +81,8 @@ input::-ms-clear {
 button,
 input[type=submit] {
   display: inline-block;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   background-color: transparent;
   background: none;
   cursor: pointer;
@@ -112,10 +114,19 @@ legend {
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-image: url("../img/background-image4.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -128,8 +139,12 @@ body {
 
 .upper_container {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 20px 20px 0 20px;
 }
 
@@ -141,13 +156,15 @@ body {
 .button {
   border-radius: 10px;
   padding: 10px 20px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   border: 1.5px solid var(--white);
 }
 .button:hover {
   background-color: var(--white);
   color: var(--black);
-  transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
 }
 @media (max-width: 420px) {
   .button {
@@ -157,6 +174,7 @@ body {
 .button--active {
   border-radius: 10px;
   padding: 10px 20px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   color: var(--black);
   background-color: var(--white);
@@ -164,7 +182,8 @@ body {
 .button--active:hover {
   background-color: var(--white);
   color: var(--black);
-  transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
 }
 @media (max-width: 420px) {
   .button--active {
@@ -173,23 +192,37 @@ body {
 }
 
 .session-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;
   margin-bottom: 40px;
 }
 @media (max-width: 420px) {
   .session-buttons {
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     row-gap: 10px;
   }
 }
 
 .container.middle-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .switch-icon {
@@ -197,15 +230,26 @@ body {
   right: 20px;
   top: 80px;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.switch-icon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .switch-setting-container {
   position: absolute;
   right: 50px;
   top: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: rgba(0, 0, 0, 0.7);
   width: 90px;
   margin-right: 10px;
@@ -216,12 +260,25 @@ body {
 .pomodoro-icon, .clock-icon {
   cursor: pointer;
   height: 24px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.pomodoro-icon:hover, .clock-icon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .date-time-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .timer, .clock {
@@ -236,11 +293,18 @@ body {
 }
 
 .control-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
 }
 
 #start-button {
@@ -248,24 +312,29 @@ body {
   padding: 10px 0;
 }
 #start-button:active {
-  transform: translateY(1px);
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
 }
 
 .refresh-icon,
 .settings-icon {
   cursor: pointer;
+  -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
 .refresh-icon:hover,
 .settings-icon:hover {
-  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .refresh-icon {
+  -webkit-transition: 1s;
   transition: 1s;
 }
 .refresh-icon:hover {
-  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
 
 .settings-icon {
@@ -321,20 +390,38 @@ iframe {
 
 .weather {
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.weather:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .weather-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   row-gap: 10px;
 }
 
 .weather-data-wrapper {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .weather-icon {
@@ -360,9 +447,12 @@ iframe {
 }
 
 .weather-info-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  -moz-column-gap: 30px;
-       column-gap: 30px;
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;
 }
 
 .weather-info__left__city {
@@ -370,8 +460,12 @@ iframe {
 }
 
 .weather-info__left__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 24px;
   font-weight: 500;
 }
@@ -381,13 +475,20 @@ iframe {
 }
 
 .weather-info__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   font-size: 14px;
 }
 .weather-info__right span {
   font-weight: 300;
   font-size: 12px;
   color: #e8e8e8;
-}/*# sourceMappingURL=style.css.map */
+}

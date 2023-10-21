@@ -6,7 +6,8 @@ const weather = document.querySelector(".weather");
 const weatherInfo = document.querySelector(".weather-info");
 
 async function getWeather(city) {
-  const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=en`;
+  const query =
+    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=en`;
   const response = await fetch(query);
   const data = await response.json();
   console.log(data);
@@ -124,9 +125,15 @@ const switchSettings = document.querySelector(".switch-setting-container");
 
 let isRunning = false;
 let countdown;
-let pomodoroSessionTime;
-let shortBreakSessionTime;
-let longBreakSessionTime;
+let pomodoroSessionTime = Number(
+  document.querySelector("#pomodoro-duration").value,
+);
+let shortBreakSessionTime = Number(
+  document.querySelector("#short-break-duration").value,
+);
+let longBreakSessionTime = Number(
+  document.querySelector("#long-break-duration").value,
+);
 let minutes = pomodoroSessionTime;
 let seconds = 0;
 
@@ -134,6 +141,7 @@ const sessionTime = {
   minutes: pomodoroSessionTime,
   seconds: seconds,
 };
+updateTimerDisplay(pomodoroSessionTime);
 
 if (localStorage.getItem("pomodoroSessionTime")) {
   pomodoroSessionTime = Number(localStorage.getItem("pomodoroSessionTime"));
@@ -143,12 +151,6 @@ if (localStorage.getItem("pomodoroSessionTime")) {
   document.querySelector("#pomodoro-duration").value = pomodoroSessionTime;
   document.querySelector("#short-break-duration").value = shortBreakSessionTime;
   document.querySelector("#long-break-duration").value = longBreakSessionTime;
-
-  updateTimerDisplay(pomodoroSessionTime);
-} else {
-  pomodoroSessionTime = document.querySelector("#pomodoro-duration").value;
-  shortBreakSessionTime = document.querySelector("#short-break-duration").value;
-  longBreakSessionTime = document.querySelector("#long-break-duration").value;
   updateTimerDisplay(pomodoroSessionTime);
 }
 
@@ -252,11 +254,11 @@ sessionSettingsForm.addEventListener("submit", function (e) {
     document.querySelector("#pomodoro-duration").value;
 
   const settingsShortBreakDuration = document.querySelector(
-    "#short-break-duration"
+    "#short-break-duration",
   ).value;
 
   const settingsLongBreakDuration = document.querySelector(
-    "#long-break-duration"
+    "#long-break-duration",
   ).value;
 
   settings.classList.add("hidden");
@@ -286,8 +288,9 @@ sessionSettingsForm.addEventListener("submit", function (e) {
 });
 
 function updateTimerDisplay(minutes, seconds = 0) {
-  const time =
-    seconds >= 10 ? `${minutes}:${seconds}` : `${minutes}:0${seconds}`;
+  const time = seconds >= 10
+    ? `${minutes}:${seconds}`
+    : `${minutes}:0${seconds}`;
   timer.textContent = time;
 }
 

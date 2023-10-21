@@ -82,6 +82,11 @@ body {
   right: 20px;
   top: 80px;
   cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .switch-setting-container {
@@ -101,6 +106,11 @@ body {
 .pomodoro-icon, .clock-icon {
   cursor: pointer;
   height: 24px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 } 
 
 .date-time-wrapper {
@@ -203,7 +213,11 @@ iframe {
 
 .weather {
   cursor: pointer;
+  transition: 0.3s;
 
+  &:hover {
+    transform: scale(1.03);
+  }
 }
 
 .weather-wrapper {
