@@ -99,8 +99,10 @@ if (localStorage.getItem("pomodoroSessionTime")) {
   longBreakSessionTime = Number(localStorage.getItem("longBreakSessionTime"));
   updateTimerDisplay(pomodoroSessionTime);
 } else {
-  const displayTime = document.querySelector("#short-break-duration").value;
-  updateTimerDisplay(Number(displayTime));
+  pomodoroSessionTime = document.querySelector("#pomodoro-duration").value;
+  shortBreakSessionTime = document.querySelector("#short-break-duration").value;
+  longBreakSessionTime = document.querySelector("#long-break-duration").value;
+  updateTimerDisplay(pomodoroSessionTime);
 }
 
 let minutes = pomodoroSessionTime;
