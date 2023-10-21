@@ -97,7 +97,12 @@ if (localStorage.getItem("pomodoroSessionTime")) {
   pomodoroSessionTime = Number(localStorage.getItem("pomodoroSessionTime"));
   shortBreakSessionTime = Number(localStorage.getItem("shortBreakSessionTime"));
   longBreakSessionTime = Number(localStorage.getItem("longBreakSessionTime"));
+  updateTimerDisplay(pomodoroSessionTime);
+} else {
+  const displayTime = document.querySelector("#short-break-duration").value;
+  updateTimerDisplay(Number(displayTime));
 }
+
 let minutes = pomodoroSessionTime;
 let seconds = 0;
 
@@ -105,8 +110,6 @@ const sessionTime = {
   minutes: pomodoroSessionTime,
   seconds: seconds,
 };
-
-updateTimerDisplay(pomodoroSessionTime);
 
 startButton.addEventListener("click", toggleTimer);
 refreshIcon.addEventListener("click", resetTimer);

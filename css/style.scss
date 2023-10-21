@@ -37,10 +37,6 @@ body {
   color: var(--white);
 }
 
-.container {
-
-}
-
 .upper_container {
   width: 100%;
   display: flex;
@@ -52,8 +48,6 @@ body {
   position: absolute;
   bottom: 10px;  
 }
-
-
 
 .button {
   @include button(var(--black));
