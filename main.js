@@ -73,7 +73,41 @@ weather.addEventListener("click", function () {
   weatherInfo.classList.toggle("hidden");
 });
 
+const clockElement = document.getElementById("clock");
+const dateElement = document.getElementById("date");
+
+/* Clock */
+function updateClock() {
+  const now = new Date();
+
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const dayOfWeek = daysOfWeek[now.getDay()];
+
+  const date = now.toLocaleDateString("de-DE");
+
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const currentTime = `${hours}:${minutes}`;
+
+  clockElement.innerText = currentTime;
+  dateElement.innerText = `${dayOfWeek}, ${date}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
 /* Pomodoro */
+const pomodoroContainer = document.querySelector(".pomodoro-container");
+const clock = document.querySelector(".clock");
+const switchIcon = document.querySelector(".switch-icon");
 const alarmSound = document.getElementById("alarm");
 const pomodoroButton = document.querySelector("#pomodoro-button");
 const shortBreakButton = document.querySelector("#short-break-button");
@@ -84,14 +118,22 @@ const settings = document.querySelector(".settings");
 const refreshIcon = document.querySelector(".refresh-icon");
 const timer = document.querySelector(".timer");
 const sessionSettingsForm = document.getElementById("session-settings-form");
+const clockIcon = document.querySelector(".clock-icon");
+const pomodoroIcon = document.querySelector(".pomodoro-icon");
+const switchSettings = document.querySelector(".switch-setting-container");
 
 let isRunning = false;
-
 let countdown;
-
 let pomodoroSessionTime;
 let shortBreakSessionTime;
 let longBreakSessionTime;
+let minutes = pomodoroSessionTime;
+let seconds = 0;
+
+const sessionTime = {
+  minutes: pomodoroSessionTime,
+  seconds: seconds,
+};
 
 if (localStorage.getItem("pomodoroSessionTime")) {
   pomodoroSessionTime = Number(localStorage.getItem("pomodoroSessionTime"));
@@ -110,24 +152,41 @@ if (localStorage.getItem("pomodoroSessionTime")) {
   updateTimerDisplay(pomodoroSessionTime);
 }
 
-let minutes = pomodoroSessionTime;
-let seconds = 0;
-
-const sessionTime = {
-  minutes: pomodoroSessionTime,
-  seconds: seconds,
-};
-
 startButton.addEventListener("click", toggleTimer);
 refreshIcon.addEventListener("click", resetTimer);
+
 settingsIcon.addEventListener("click", function () {
   settings.classList.toggle("hidden");
+  switchSettings.classList.add("hidden");
 });
 
 [pomodoroButton, shortBreakButton, longBreakButton].forEach((button) => {
   button.addEventListener("click", function () {
     setPomodoroSession(button);
   });
+});
+
+switchIcon.addEventListener("click", function () {
+  switchSettings.classList.toggle("hidden");
+  settings.classList.add("hidden");
+});
+
+clockIcon.addEventListener("click", function () {
+  clock.classList.remove("hidden");
+  dateElement.classList.remove("hidden");
+  pomodoroContainer.classList.add("hidden");
+
+  /* wieder schließen */
+  switchSettings.classList.add("hidden");
+});
+
+pomodoroIcon.addEventListener("click", function () {
+  pomodoroContainer.classList.remove("hidden");
+  clock.classList.add("hidden");
+  dateElement.classList.add("hidden");
+
+  /* wieder schließen */
+  switchSettings.classList.add("hidden");
 });
 
 function setPomodoroSession(sessionButton) {

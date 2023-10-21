@@ -29,26 +29,43 @@
 
     <!-- middle container -->
     <div class="container middle-container">
-      <div class="session-buttons">
-        <button
-          id="pomodoro-button"
-          data="buttons"
-          class="button button--active"
-        >
-          pomodoro
-        </button>
-        <button id="short-break-button" data="buttons" class="button">
-          short break
-        </button>
-        <button id="long-break-button" data="buttons" class="button">
-          long break
-        </button>
+      <div class="switch-setting-container hidden">
+        <img class="clock-icon" src="./img/icons/clock-icon.svg" alt="clock" />
+        <img
+          class="pomodoro-icon"
+          src="./img/icons/pomodro-timer.svg"
+          alt="pomodoro-timer"
+        />
       </div>
-      <div class="timer"></div>
-      <div class="control-buttons">
-        <button id="start-button" class="button--active">start</button>
-        <div class="refresh-icon">
-          <img src="./img/icons/refresh-icon.svg" alt="" />
+      <div class="switch-icon">
+        <img src="./img/icons/switch.svg" alt="" />
+      </div>
+      <div class="date-time-wrapper">
+        <div id="clock" class="clock hidden"></div>
+        <div class="date hidden" id="date"></div>
+      </div>
+      <div class="pomodoro-container">
+        <div class="session-buttons">
+          <button
+            id="pomodoro-button"
+            data="buttons"
+            class="button button--active"
+          >
+            pomodoro
+          </button>
+          <button id="short-break-button" data="buttons" class="button">
+            short break
+          </button>
+          <button id="long-break-button" data="buttons" class="button">
+            long break
+          </button>
+        </div>
+        <div class="timer"></div>
+        <div class="control-buttons">
+          <button id="start-button" class="button--active">start</button>
+          <div class="refresh-icon">
+            <img src="./img/icons/refresh-icon.svg" alt="" />
+          </div>
         </div>
       </div>
     </div>
