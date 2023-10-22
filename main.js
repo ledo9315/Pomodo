@@ -94,7 +94,6 @@ function showCardInfo(weatherData) {
 getWeather("Flensburg");
 
 weather.addEventListener("click", function () {
-  console.log("MOIN");
   weatherInfo.classList.toggle("hidden");
 });
 
