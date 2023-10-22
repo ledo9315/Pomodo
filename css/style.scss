@@ -51,6 +51,11 @@ body {
   justify-content: space-between;
 }
 
+.bottom_container {
+  display: block; 
+  height: 80px;
+}
+
 
 .button {
   @include button(var(--black));
