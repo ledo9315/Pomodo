@@ -8,7 +8,7 @@ async function changeBackground() {
     const height = 2160; // Höhe des gewünschten Bildes
 
     const response = await fetch(
-      `https://source.unsplash.com/${width}x${height}/?city/landscape`
+      `https://source.unsplash.com/${width}x${height}/?dark/landscape`
     );
 
     console.log(response);
