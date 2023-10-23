@@ -205,7 +205,11 @@ body {
 .settings-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   row-gap: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .switch-icon {
@@ -214,12 +218,12 @@ body {
 
 .switch-setting-container {
   position: absolute;
-  right: 50px;
-  top: 70px;
+  right: 60px;
+  top: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
   width: 90px;
   margin-right: 10px;
   padding: 10px 10px;
@@ -290,8 +294,8 @@ body {
   font-size: 14px;
   position: absolute;
   top: 0px;
-  right: 60px;
-  background-color: rgba(0, 0, 0, 0.7);
+  right: 70px;
+  background-color: rgba(0, 0, 0, 0.2);
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -338,6 +342,9 @@ iframe {
 }
 
 .weather {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -371,8 +378,8 @@ iframe {
 /* weather info card */
 .weather-info {
   position: absolute;
-  top: 60px;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 80px;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 20px 20px;
 }

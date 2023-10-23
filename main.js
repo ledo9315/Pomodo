@@ -1,5 +1,8 @@
 setInterval(changeBackground, intervalInMinutes(1));
-changeBackground();
+
+setTimeout(() => {
+  changeBackground();
+}, 30000);
 
 /* Background */
 async function changeBackground() {
