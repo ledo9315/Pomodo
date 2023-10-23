@@ -1,14 +1,12 @@
-setInterval(changeBackground, intervalInMinutes(1));
-
-setTimeout(() => {
-  changeBackground();
-}, 30000);
-
 /* Background */
+const forwardIcon = document.querySelector(".forward-icon");
+
+setInterval(changeBackground, intervalInMinutes(5));
+
 async function changeBackground() {
   try {
-    const width = 4096; // Breite des gewünschten Bildes
-    const height = 2160; // Höhe des gewünschten Bildes
+    const width = 4096;
+    const height = 2160;
 
     const response = await fetch(
       `https://source.unsplash.com/${width}x${height}/?dark/landscape`
@@ -26,12 +24,19 @@ function intervalInMinutes(minutes) {
   return minutes * 1000 * 60;
 }
 
+forwardIcon.addEventListener("click", function () {
+  changeBackground();
+});
+
 /* Weather */
 const apiKey = "9ab38fc6ee3445fe8ab120343230310";
 const form = document.querySelector("#form");
 const input = document.querySelector("#inputCity");
 const weather = document.querySelector(".weather");
 const weatherInfo = document.querySelector(".weather-info");
+
+// Initial weather display for the user's current location
+getWeatherByGeolocation();
 
 async function getWeather(city) {
   const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=en`;
@@ -64,11 +69,11 @@ function showErrorMessage(message) {
 
 function showCard(weatherData) {
   const card = `
-  <div class="weather-data-wrapper">
-  <div class="temp">${weatherData.temp}<sup>°</sup></div>
-  <img class="weather-icon" src="${weatherData.icon}"></img>
-  </div>
-  <div class="cityName">${weatherData.name}</div>
+    <div class="weather-data-wrapper">
+      <div class="temp">${weatherData.temp}<sup>°</sup></div>
+      <img class="weather-icon" src="${weatherData.icon}"></img>
+    </div>
+    <div class="cityName">${weatherData.name}</div>
   `;
   weather.insertAdjacentHTML("beforeend", card);
 }
@@ -94,16 +99,31 @@ function showCardInfo(weatherData) {
   weatherInfo.insertAdjacentHTML("afterbegin", infoCard);
 }
 
-getWeather("Flensburg");
+function getWeatherByGeolocation() {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no&lang=en`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const city = data.location.name;
+          getWeather(city);
+        });
+    });
+  }
+}
 
 weather.addEventListener("click", function () {
   weatherInfo.classList.toggle("hidden");
 });
 
+/* Clock */
 const clockElement = document.getElementById("clock");
 const dateElement = document.getElementById("date");
 
-/* Clock */
 function updateClock() {
   const now = new Date();
 

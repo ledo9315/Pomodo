@@ -115,7 +115,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: background 2s;
+  transition: 2s;
   background-image: url("../img/background-image4.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -130,7 +130,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 20px 20px 0 20px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 @media (max-width: 420px) {
   .upper_container {
@@ -212,10 +212,50 @@ body {
   border-radius: 10px;
 }
 
-.switch-icon {
-  cursor: pointer;
+/* icons */
+.settings-icon {
+  padding-top: 5px;
+  width: 25px;
 }
 
+.switch-icon,
+.forward-icon,
+.refresh-icon,
+.settings-icon,
+.pomodoro-icon,
+.clock-icon {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.switch-icon:hover,
+.forward-icon:hover,
+.refresh-icon:hover,
+.settings-icon:hover,
+.pomodoro-icon:hover,
+.clock-icon:hover {
+  transform: scale(1.1);
+}
+.switch-icon:active,
+.forward-icon:active,
+.refresh-icon:active,
+.settings-icon:active,
+.pomodoro-icon:active,
+.clock-icon:active {
+  transform: translateY(2px);
+}
+
+.refresh-icon {
+  transition: 1s;
+}
+.refresh-icon:hover {
+  transform: rotate(360deg);
+}
+
+.pomodoro-icon, .clock-icon {
+  height: 24px;
+}
+
+/* /icons */
 .switch-setting-container {
   position: absolute;
   right: 60px;
@@ -228,11 +268,6 @@ body {
   margin-right: 10px;
   padding: 10px 10px;
   border-radius: 10px;
-}
-
-.pomodoro-icon, .clock-icon {
-  cursor: pointer;
-  height: 24px;
 }
 
 .date-time-wrapper {
@@ -266,28 +301,6 @@ body {
 }
 #start-button:active {
   transform: translateY(1px);
-}
-
-.refresh-icon,
-.settings-icon {
-  cursor: pointer;
-  transition: 0.3s all;
-}
-.refresh-icon:hover,
-.settings-icon:hover {
-  transform: scale(1.03);
-}
-
-.refresh-icon {
-  transition: 1s;
-}
-.refresh-icon:hover {
-  transform: rotate(360deg);
-}
-
-.settings-icon {
-  padding-top: 5px;
-  width: 25px;
 }
 
 .settings {
@@ -346,6 +359,13 @@ iframe {
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.2s;
+}
+.weather:hover {
+  transform: scale(1.04);
+}
+.weather:active {
+  transform: translate(2px);
 }
 
 .weather-wrapper {
