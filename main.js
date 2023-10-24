@@ -1,6 +1,6 @@
 /* Background */
 const forwardIcon = document.querySelector(".forward-icon");
-
+changeBackground();
 setInterval(changeBackground, intervalInMinutes(5));
 
 async function changeBackground() {
@@ -34,8 +34,9 @@ const form = document.querySelector("#form");
 const input = document.querySelector("#inputCity");
 const weather = document.querySelector(".weather");
 const weatherInfo = document.querySelector(".weather-info");
+const changeCitybutton = document.querySelector(".change-city-button");
+const weatherDataWrapper = document.querySelector(".weather-data-wrapper");
 
-// Initial weather display for the user's current location
 getWeatherByGeolocation();
 
 async function getWeather(city) {
@@ -64,7 +65,7 @@ async function getWeather(city) {
 
 function showErrorMessage(message) {
   const card = `<main class="card">${message}</main>`;
-  weather.insertAdjacentHTML("afterend", card);
+  weather.insertAdjacentHTML("beforeend", card);
 }
 
 function showCard(weatherData) {
@@ -81,20 +82,20 @@ function showCard(weatherData) {
 function showCardInfo(weatherData) {
   const infoCard = `
     <div class="weather-info-wrapper">
-    <div class="weather-info__left">
-      <div class="weather-info__left__city">${weatherData.name}</div>
-      <div class="weather-info__left__status">${weatherData.condition}</div>
-      <div class="weather-info__left__wrapper">
-        <img class="weather-info__left__wrapper__icon" src="${weatherData.icon}"></img>
-        <div class="weather-info__left__wrapper__temp">${weatherData.temp}<sup>°</sup></div>
+      <div class="weather-info__left">
+        <div class="weather-info__left__city">${weatherData.name}</div>
+        <div class="weather-info__left__status">${weatherData.condition}</div>
+        <div class="weather-info__left__wrapper">
+          <img class="weather-info__left__wrapper__icon" src="${weatherData.icon}" alt="">
+          <div class="weather-info__left__wrapper__temp">${weatherData.temp}<sup>°</sup></div>
+        </div>
+      </div>
+      <div class="weather-info__right">
+        <div class="feels-like"><span>Feels like</span> ${weatherData.feelslike}<sup>°</sup></div>
+        <div class="humidity"><span>Humidity</span> ${weatherData.humidity}%</div>
+        <div class="wind"><span>Wind</span> ${weatherData.wind}km/h</div>
       </div>
     </div>
-    <div class="weather-info__right">
-      <div class="feels-like"><span>Feels like</span>  ${weatherData.feelslike}<sup>°</sup></div>
-      <div class="humidity"><span>Humidity</span>  ${weatherData.humidity}%</div>
-      <div class="wind"><span>Wind</span>  ${weatherData.wind}km/h</div>
-    </div>
-  </div>
   `;
   weatherInfo.insertAdjacentHTML("afterbegin", infoCard);
 }
@@ -118,6 +119,45 @@ function getWeatherByGeolocation() {
 
 weather.addEventListener("click", function () {
   weatherInfo.classList.toggle("hidden");
+});
+
+changeCitybutton.addEventListener("click", function () {
+  changeCitybutton.classList.add("hidden");
+
+  const inputCityHTML = `
+  <div class="form-container">
+  <form id="changeCityForm" action="javascript:void(0);">
+    <input type="text" placeholder="Your City..." id="inputCity" name="inputCity" required>
+    <button type="submit">Send</button>
+  </form>
+  <img class="close-icon" src="./img/icons/close-icon.svg" alt="" />
+  </div>  
+  `;
+
+  weather.insertAdjacentHTML("afterend", inputCityHTML);
+
+  const formContainer = document.querySelector(".form-container");
+  const closeIcon = document.querySelector(".close-icon");
+
+  closeIcon.addEventListener("click", function () {
+    console.log(formContainer);
+    formContainer.remove();
+    changeCitybutton.classList.remove("hidden");
+    closeIcon.remove();
+  });
+
+  formContainer.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const newCity = document.getElementById("inputCity").value;
+
+    weather.innerHTML = "";
+    weatherInfo.innerHTML = "";
+
+    getWeather(newCity);
+
+    formContainer.remove();
+    changeCitybutton.classList.remove("hidden");
+  });
 });
 
 /* Clock */

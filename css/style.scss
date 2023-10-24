@@ -26,7 +26,7 @@ body {
   align-items: center;
 
   transition: 2s;
-  background-image: url("../img/background-image4.jpg");
+  background-color: #262626;
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -133,6 +133,15 @@ body {
   height: 24px;
 } 
 
+
+.close-icon {
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+
+
 /* /icons */
 
 .switch-setting-container {
@@ -233,6 +242,46 @@ iframe {
   }
 }
 
+.change-city-button {
+  opacity: 0;
+
+  font-size: 14px;
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+#inputCity {
+  background-color: rgba($color: #000000, $alpha: 0.2);
+  border-radius: 10px;
+  padding: 5px 10px;
+
+  & + button {
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 5px 10px;
+
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+      background-color: rgba($color: #000000, $alpha: 0.6);
+      color: var(--white);
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+
+  }
+}
+
+#inputCity::placeholder {
+  color: #b1b1b1;
+}
+
 .weather {
   background-color: rgba($color: #000000, $alpha: 0.2);
   padding: 10px;
@@ -248,13 +297,37 @@ iframe {
   }
 }
 
+.weather:hover + .change-city-button, .change-city-button:hover {
+  opacity: 1;
+}
+
+.form-container {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+
+  & .close-icon {
+    opacity: 0;
+    transition: opacity 0.6s; /* Fügt eine 0.3-Sekunden-Transition für die Opazität hinzu */
+  }
+}
+
+
+#changeCityForm:hover + .close-icon, .close-icon:hover {
+  opacity: 1;
+}
+
 
 .weather-wrapper {
-  position: relative;
+  height: 70px;
   display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+  flex-direction: row;
+  column-gap: 20px;
+  align-items: center;
+
+
 }
+
 
 .weather-data-wrapper {
   position: relative;
@@ -279,7 +352,7 @@ iframe {
 /* weather info card */
 .weather-info {
   position: absolute;
-  top: 80px;
+  top: 100px;
   background-color: rgba($color: #000000, $alpha: 0.2);
   border-radius: 10px;
   padding: 20px 20px;
@@ -288,6 +361,14 @@ iframe {
     background-color: var(--black);
   }
 }
+
+
+.weather-info-wrapper:hover + .close-icon, .close-icon:hover {
+  opacity: 1;
+}
+
+
+
 .weather-info-wrapper {
   display: flex;
   column-gap: 30px;
@@ -317,4 +398,5 @@ iframe {
     color: #e8e8e8;
   }
 }
+
 
