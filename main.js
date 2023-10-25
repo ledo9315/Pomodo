@@ -9,7 +9,7 @@ async function changeBackground() {
     const height = 2160;
 
     const response = await fetch(
-      `https://source.unsplash.com/${width}x${height}/?dark/landscape`
+      `https://source.unsplash.com/${width}x${height}/?nature/landscape`
     );
 
     console.log(response);
@@ -140,7 +140,6 @@ changeCitybutton.addEventListener("click", function () {
   const closeIcon = document.querySelector(".close-icon");
 
   closeIcon.addEventListener("click", function () {
-    console.log(formContainer);
     formContainer.remove();
     changeCitybutton.classList.remove("hidden");
     closeIcon.remove();
