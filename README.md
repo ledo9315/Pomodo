@@ -22,6 +22,8 @@ To run the web application locally, follow these steps:
 2. Navigate to the directory of the cloned repository.
 
 3. Open the `index.html` file in a web browser of your choice.
+   
+5. Or directly visit the website: https://ledo9315.github.io/pomodoro/
 
 ## Usage
 Start the timer to work using the Pomodoro Technique. Adjust the length of work and break intervals to your needs.
