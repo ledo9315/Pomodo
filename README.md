@@ -1,27 +1,29 @@
-# Pomodoro-Timer
+# Pomodoro Timer
 
-## Beschreibung
-Dieses Repository enthält den Quellcode für eine Pomodoro-Timer-Webanwendung. Die Pomodoro-Technik ist eine Zeitmanagement-Methode, die Arbeit in Intervallen mit Pausen strukturiert. Diese Webanwendung ermöglicht es, Pomodoro-Timer einzustellen und deibe Arbeits-/Pausenzeiten effektiv zu verwalten.
+## Description
+This repository contains the source code for a Pomodoro Timer web application. The Pomodoro Technique is a time management method that structures work into intervals with breaks. This web application allows setting Pomodoro timers and effectively managing work/break times.
 
-[![Screenshot-2023-12-06-044457.png](https://i.postimg.cc/G3ZsS7hv/Screenshot-2023-12-06-044457.png)](https://postimg.cc/F1VRYxSK)
+![Screenshot of the Pomodoro Timer web application](https://i.postimg.cc/G3ZsS7hv/Screenshot-2023-12-06-044457.png)
 
 ## Features
-- Einstellbare Timer für Arbeits- und Pausenintervalle
-- Einfache und benutzerfreundliche Schnittstelle
-- Möglichkeit, die Timer nach individuellen Bedürfnissen anzupassen
+- Adjustable timers for work and break intervals
+- Simple and user-friendly interface
+- Ability to customize the timers to individual needs
 
 ## Installation
-Um die Webanwendung lokal auszuführen, folge diesen Schritten:
+To run the web application locally, follow these steps:
 
-1. Klone das Repository:
+1. Clone the repository:
+
    ```
    git clone https://github.com/ledo9315/pomodoro.git
    ```
+   
+2. Navigate to the directory of the cloned repository.
 
-2. Navigiere in das Verzeichnis des geklonten Repositories.
+3. Open the `index.html` file in a web browser of your choice.
 
-3. Öffne die `index.html`-Datei in einem Webbrowser deiner Wahl.
+## Usage
+Start the timer to work using the Pomodoro Technique. Adjust the length of work and break intervals to your needs.
 
-## Nutzung
-Starte den Timer, um mit der Pomodoro-Technik zu arbeiten. Passe die Länge der Arbeits- und Pausenintervalle nach Ihren Bedürfnissen an.
 
