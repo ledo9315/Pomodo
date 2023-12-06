@@ -29,3 +29,6 @@ To run the web application locally, follow these steps:
 Start the timer to work using the Pomodoro Technique. Adjust the length of work and break intervals to your needs.
 
 
+---
+
+Developed with ☕ and ❤️
